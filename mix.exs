@@ -20,9 +20,9 @@ defmodule Bamboo.SparkPostAdapter.Mixfile do
        [
         source_ref: "v#{@version}",
         canonical: "http://hexdocs.pm/bamboo_sparkpost",
-        main: "Bamboo Sparkpost Adapter",
+        main: "Bamboo.SparkpostAdapter",
         source_url: @project_url,
-        extras: ["README.md", "CHANGELOG.md"]
+        extras: ["README.md", "CONTRIBUTING.md", "CHANGELOG.md"]
        ]
      end,
      test_coverage: [tool: ExCoveralls],
@@ -37,7 +37,7 @@ defmodule Bamboo.SparkPostAdapter.Mixfile do
 
   defp package do
     [
-      maintainers: ["Andrew Timberlake"],
+      maintainers: ["Andrew Timberlake", "Yianna Kokalas", "Rich Leland"],
       licenses: ["MIT"],
       links: %{"Github" => @project_url}
     ]
@@ -46,13 +46,12 @@ defmodule Bamboo.SparkPostAdapter.Mixfile do
   defp deps do
     [
       {:bamboo, "~> 0.8"},
-      {:sparkpost, "~> 0.5.1"},
+      {:sparkpost, "~> 0.5"},
       {:cowboy, "~> 1.0", only: [:test, :dev]},
-      {:credo, "~> 0.5.1", only: [:dev, :test]},
-      {:earmark, ">= 0.0.0", only: :dev},
+      {:credo, "~> 0.7", only: [:dev, :test]},
       {:ex_doc, "~> 0.9", only: :dev},
-      {:excoveralls, "~> 0.5.7", only: :test},
-      {:httpoison, "~> 0.11.2"},
+      {:excoveralls, "~> 0.6", only: :test},
+      {:httpoison, "~> 0.11"},
     ]
   end
 end

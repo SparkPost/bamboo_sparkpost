@@ -104,7 +104,8 @@ defmodule Bamboo.SparkPostAdapter do
     if email.cc == [] do
       email.headers
     else
-      Map.put_new(email.headers, "CC", Enum.map(email.cc, fn({_,addr}) -> addr end) |> Enum.join(","))
+      cc_addrs = for {_, addr} <- email.cc, do: addr
+      Map.put_new(email.headers, "CC", cc_addrs |> Enum.join(","))
     end
   end
 
@@ -149,11 +150,12 @@ defmodule Bamboo.SparkPostAdapter do
   end
 
   defp add_b_cc(recipients, new_recipients, to) do
+    to_addrs = for {_, addr} <- to, do: addr
     Enum.reduce(new_recipients, recipients, fn(recipient, recipients) ->
       recipients ++ [%{"address" => %{
         name: recipient |> elem(0),
         email: recipient |> elem(1),
-        header_to: Enum.map(to, fn({_,addr}) -> addr end) |> Enum.join(","),
+        header_to: to_addrs |> Enum.join(","),
       }}]
     end)
   end
