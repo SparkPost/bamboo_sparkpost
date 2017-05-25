@@ -20,9 +20,9 @@ defmodule Bamboo.SparkPostAdapter.Mixfile do
        [
         source_ref: "v#{@version}",
         canonical: "http://hexdocs.pm/bamboo_sparkpost",
-        main: "Bamboo Sparkpost Adapter",
+        main: "Bamboo.SparkpostAdapter",
         source_url: @project_url,
-        extras: ["README.md", "CHANGELOG.md"]
+        extras: ["README.md", "CONTRIBUTING.md", "CHANGELOG.md"]
        ]
      end,
      test_coverage: [tool: ExCoveralls],
@@ -37,7 +37,7 @@ defmodule Bamboo.SparkPostAdapter.Mixfile do
 
   defp package do
     [
-      maintainers: ["Andrew Timberlake"],
+      maintainers: ["Andrew Timberlake", "Yianna Kokalas", "Rich Leland"],
       licenses: ["MIT"],
       links: %{"Github" => @project_url}
     ]
